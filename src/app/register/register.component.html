@@ -1,0 +1,54 @@
+<div class="top-div container">
+  <div class="card" style="width: 30rem">
+    <div class="card-body">
+      <h3><b>SIGN UP</b></h3>
+      <div class="mb-1 my-5">
+      <label for="usertype">Select Usertype : </label>&nbsp;
+      <select name="usertype" id="usertype" [(ngModel)]="usertype">
+        <option value="admin" selected="selected">Admin</option>
+        <option value="superadmin">SuperAdmin</option>
+      </select>
+    </div>
+      <br />  
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="username"
+          placeholder="Username"
+        />
+        <label for="floatingInput">Username</label>
+      </div>
+      <br />
+
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          [(ngModel)]="password"
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <br />
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          [(ngModel)]="confirmPassword"
+        />
+        <label for="floatingPassword">Confirm Password</label>
+      </div>
+      <br />
+
+      <button
+        type="submit"
+        class="btn btn-success btn-lg my-4"
+        (click)="onRegister()"
+      >
+        Sign Up
+      </button>
+    </div>
+  </div>
+</div>

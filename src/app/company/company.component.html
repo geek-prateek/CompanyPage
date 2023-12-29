@@ -1,0 +1,36 @@
+<button (click)="onReturn()">GO BACK</button>
+<br><br>
+<div>
+<input type="text" [(ngModel)]="search" placeholder="Search text here...">
+<table id="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Job role</th>
+      <th>CTC</th>
+      <th>Time Shift</th>
+      <th *permissions="'superadmin'">Action</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody" [ngStyle]="{'color': 'blue'}" [ngClass]="{'background': true}">
+    <tr *ngFor="let item of company | searchFilter: 'name': search" >
+      <td>{{ item.id }}</td>
+      <td [fontWeight]="'bold'">{{ item.name | titleCasePipe }}</td>
+      <td>{{ item.address | titleCasePipe }}</td>
+      <td>{{ item.jobrole }}</td>
+      <td>{{ item.ctc }}</td>
+      <td>{{ item.timeshift }}</td>
+      <td *permissions="'superadmin'"><button (click)="onClick(item)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
+<div> <!-- *ngIf="userService.flag" -->
+  <!-- <app-company-edit [item]="items"></app-company-edit> -->
+  <router-outlet></router-outlet>
+</div>
+</div>
+
+
+
