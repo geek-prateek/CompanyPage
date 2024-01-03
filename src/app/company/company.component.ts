@@ -2,7 +2,7 @@ import { Component, Input, OnInit} from '@angular/core';
 import { CompanyDetails } from './CompanyDetails';
 import { CompanyService } from './company.service';
 import { UserService } from '../login/user.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-company',
@@ -24,9 +24,9 @@ export class CompanyComponent implements OnInit{
     onClick(event : any){
         console.log(event);
         this.companyService.items = event;
-
+        
         // this.userService.flag = true;
-        this.router.navigate(['company-edit'], {relativeTo: this.route});
+        this.router.navigate(['company/company-edit'], {queryParams: {name: this.companyService.items.name, address: this.companyService.items.address}});
     }
 
     onReturn(){
