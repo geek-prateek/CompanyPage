@@ -14,16 +14,17 @@ import { CommonModule } from '@angular/common';
 import { CompanyService } from './company/company.service';
 import { TitleCasePipe } from './shared/title-case.pipe';
 import { FilterSearchPipe } from './shared/filter-search.pipe';
+import { CompanyModule } from './company/company.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    CompanyComponent,
-    CompanyEditComponent,
-    TitleCasePipe,
-    FilterSearchPipe
+    // CompanyComponent,
+    // CompanyEditComponent,
+    // TitleCasePipe,
+    // FilterSearchPipe
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,7 @@ import { FilterSearchPipe } from './shared/filter-search.pipe';
     SharedModule,
     CommonModule
   ],
-  providers: [UserService, CompanyService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,7 +21,6 @@ export class CompanyEditComponent implements OnInit{
             this.empAddr = params['address'];
         })
     }
-   
 
     // ngOnChanges(){
     //     console.log("Item : " +this.companyService.items);
@@ -33,7 +32,7 @@ export class CompanyEditComponent implements OnInit{
             this.companyService.items.name = this.empName;
             this.companyService.items.address = this.empAddr;
             // this.hide.emit(false);
-            this.router.navigate(['company']);
+            this.router.navigate(['company/link']);
             this.empName = "";
             this.empAddr = "";
             
@@ -43,7 +42,7 @@ export class CompanyEditComponent implements OnInit{
     }
 
     onClear(){
-        this.router.navigate(['company'])
+        this.router.navigate(['company/link'])
     }
 
 }

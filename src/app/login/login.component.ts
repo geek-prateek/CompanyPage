@@ -25,7 +25,7 @@ export class LoginComponent {
             this.userService.username = this.username;
 
             // this.loggedIn.emit(true);
-            this.router.navigate(['/company']);
+            this.router.navigate(['company/link']);
 
         }else{
             alert("Please Try again!")

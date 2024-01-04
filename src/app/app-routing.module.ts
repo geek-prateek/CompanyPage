@@ -9,10 +9,11 @@ const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register',  component: RegisterComponent},
-  {path: 'company', component: CompanyComponent, children: [
-    {path: 'company-edit', component: CompanyEditComponent},
-  ]},
-  {path: '**', redirectTo: 'login', pathMatch: 'full'}
+  {path: 'company', loadChildren: ()=>import('src/app/company/company.module').then(x => x.CompanyModule)},
+  // {path: 'company', component: CompanyComponent, children: [
+  //   {path: 'company-edit', component: CompanyEditComponent},
+  // ]},
+  // {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({

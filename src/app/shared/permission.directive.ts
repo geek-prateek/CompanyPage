@@ -20,7 +20,9 @@ export class PermissionDirective {
 
     @Input() set permissions(permission: string){
         const usertype = this.userService.getUsertype();
-        if(permission==usertype){
+        const matchUsertype = this.permissionDetails.find(x => x.usertype === usertype);
+    
+        if(matchUsertype?.access.includes('edit')){
             this.viewContainer.createEmbeddedView(this.template);
         }else{
             this.viewContainer.clear();

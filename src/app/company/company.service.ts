@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 import { CompanyDetails } from "./CompanyDetails";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class CompanyService{
     constructor(private router: Router, private route: ActivatedRoute){}
 

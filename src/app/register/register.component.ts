@@ -35,7 +35,7 @@ export class RegisterComponent {
           const newUser: UserDetails = { usertype: this.usertype, username: this.username, password: this.password };
           this.userService.addedUser.push(newUser);
           // this.showLogin.emit();
-          this.router.navigate(['login'], {relativeTo: this.route});
+          this.router.navigate(['/login']);
           
           console.log(newUser.usertype, newUser.username, newUser.password);
         }
