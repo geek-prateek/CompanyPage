@@ -6,36 +6,41 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-    username : string="";
-    password: string ="";
+  username: string = '';
+  password: string = '';
 
-    // @Output() loggedIn = new EventEmitter<boolean>();
-    // @Output() showSignup = new EventEmitter<boolean>();
-    
+  // @Output() loggedIn = new EventEmitter<boolean>();
+  // @Output() showSignup = new EventEmitter<boolean>();
 
-    constructor(private userService: UserService, private router: Router, private route: ActivatedRoute){ }
-    
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-    onClicked(){
-        if(this.userService.addedUser.find(user => user.username === this.username && user.password === this.password)){
-            console.log("Succesfully logged IN");
-            this.userService.username = this.username;
+  onClicked() {
+    if (
+      this.userService.addedUser.find(
+        (user) =>
+          user.username === this.username && user.password === this.password
+      )
+    ) {
+      console.log('Succesfully logged IN');
+      this.userService.username = this.username;
 
-            // this.loggedIn.emit(true);
-            this.router.navigate(['company/link']);
-
-        }else{
-            alert("Please Try again!")
-        }
-        this.username='';
-        this.password='';
+      // this.loggedIn.emit(true);
+      this.router.navigate(['company/link']);
+    } else {
+      alert('Username & Password are incorrect!');
     }
-    onRegister(){
-        // this.showSignup.emit(true);
-        this.router.navigate(['/register']);
-    }
-
+    this.username = '';
+    this.password = '';
+  }
+  onRegister() {
+    // this.showSignup.emit(true);
+    this.router.navigate(['/register']);
+  }
 }

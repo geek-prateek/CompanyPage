@@ -11,7 +11,7 @@
       <th>Job role</th>
       <th>CTC</th>
       <th>Time Shift</th>
-      <th *permissions="'superadmin'">Action</th>
+      <th *permissions="'edit'">Action</th>
     </tr>
   </thead>
   <tbody id="tableBody" [ngStyle]="{'color': 'blue'}" [ngClass]="{'background': true}">
@@ -22,7 +22,7 @@
       <td>{{ item.jobrole }}</td>
       <td>{{ item.ctc }}</td>
       <td>{{ item.timeshift }}</td>
-      <td *permissions="'superadmin'"><button (click)="onClick(item)">Edit</button></td>
+      <td *permissions="'edit'"><button (click)="onClick(item)">Edit</button></td>
     </tr>
   </tbody>
 </table>

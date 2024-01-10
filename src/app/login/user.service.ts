@@ -12,27 +12,27 @@ export class UserService {
         {
             usertype: 'admin',
             username: 'prateek',
-            password: 'prateek'
+            password: 'Prateek@123'
         },
         {
             usertype: 'superadmin',
             username: 'shoaib',
-            password: 'shoaib'
+            password: 'Shoaib@123'
         },
         {
             usertype: 'superadmin',
             username: 'faizan',
-            password: 'faizan'
+            password: 'Faizan@123'
         },
         {
             usertype: 'superadmin',
             username: 'krutik',
-            password: 'krutik'
+            password: 'Krutik@123'
         },
         {
             usertype: 'admin',
             username: 'amod',
-            password: 'amod'
+            password: 'Amod@123'
         }
     ]
 

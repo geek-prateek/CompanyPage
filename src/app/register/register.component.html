@@ -5,7 +5,8 @@
       <div class="mb-1 my-5">
       <label for="usertype">Select Usertype : </label>&nbsp;
       <select name="usertype" id="usertype" [(ngModel)]="usertype">
-        <option value="admin" selected="selected">Admin</option>
+        <option value="" selected disabled hidden>Choose here</option>
+        <option value="admin">Admin</option>
         <option value="superadmin">SuperAdmin</option>
       </select>
     </div>
@@ -19,6 +20,7 @@
         />
         <label for="floatingInput">Username</label>
       </div>
+      <small *ngIf="((username.length > 0) && (username.length < 3))"><span>*Username must be greater than 3 characters</span></small>
       <br />
 
       <div class="form-floating">
@@ -29,7 +31,15 @@
           [(ngModel)]="password"
         />
         <label for="floatingPassword">Password</label>
+        
       </div>
+      <small>
+        <span *ngIf="((password.length > 0) && (password.length < 8))">*Password must be of minimum 8 characters </span>
+        <span *ngIf="password && !password.match(upperCase)"> 1 upperCase </span>
+        <span *ngIf="password && !password.match(lowerCase)"> 1 lowerCase </span>
+        <span *ngIf="password && !password.match(number)"> 1 digit </span>
+        <span *ngIf="password && !password.match(specialCharacter)"> 1 specialCharacter</span>
+      </small>
       <br />
       <div class="form-floating">
         <input
@@ -45,10 +55,12 @@
       <button
         type="submit"
         class="btn btn-success btn-lg my-4"
+        [disabled] = "!usertype || !username || !password || !confirmPassword"
         (click)="onRegister()"
       >
         Sign Up
-      </button>
+      </button><br>
+      <small *ngIf="!usertype || !username || !password || !confirmPassword">*For enable, fill all the details</small>
     </div>
   </div>
 </div>

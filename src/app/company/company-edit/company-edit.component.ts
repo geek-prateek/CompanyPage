@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from "@angular/core";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, CanDeactivate, CanDeactivateFn, Params, Router, RouterStateSnapshot } from "@angular/router";
 import { CompanyDetails } from "src/app/company/CompanyDetails";
 import { CompanyService } from "src/app/company/company.service";
+import { CanComponentDeactivate } from "../can-deactivate-guard.service";
+import { Observable } from "rxjs";
 
 @Component({
     selector: "app-company-edit",
@@ -43,6 +45,15 @@ export class CompanyEditComponent implements OnInit{
 
     onClear(){
         this.router.navigate(['company/link'])
+    }
+
+    canDeactivate(): boolean{
+        if(this.empName !== '' || this.empAddr !== ''){
+            return confirm("Do you want to discard the changes?");
+        }
+        else{
+            return true;
+        }
     }
 
 }

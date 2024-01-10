@@ -26,7 +26,7 @@ export class CompanyComponent implements OnInit{
         this.companyService.items = event;
         
         // this.userService.flag = true;
-        this.router.navigate(['../company-edit'], {queryParams: {name: this.companyService.items.name, address: this.companyService.items.address}, relativeTo: this.route});
+        this.router.navigate(['../company-edit'], {queryParams: {name: this.companyService.items.name, address: this.companyService.items.address},relativeTo:this.route});
     }
 
     onReturn(){

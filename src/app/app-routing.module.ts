@@ -13,7 +13,7 @@ const routes: Routes = [
   // {path: 'company', component: CompanyComponent, children: [
   //   {path: 'company-edit', component: CompanyEditComponent},
   // ]},
-  // {path: '**', redirectTo: 'login', pathMatch: 'full'}
+  {path: '**', component: LoginComponent}
 ];
 
 @NgModule({
