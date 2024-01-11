@@ -1,10 +1,13 @@
 import { Injectable, OnInit } from "@angular/core";
 import { UserDetails } from "./UserDetails";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Injectable()
 export class UserService {
 
-    username: string = '';
+    username: string | undefined | null;
+
+    constructor(private router: Router, private route: ActivatedRoute){}
     
     // flag: boolean = false;
     
@@ -30,7 +33,7 @@ export class UserService {
             password: 'Krutik@123'
         },
         {
-            usertype: 'admin',
+            usertype: 'admin',                 
             username: 'amod',
             password: 'Amod@123'
         }
@@ -38,8 +41,25 @@ export class UserService {
 
     getUsertype() {
         const foundUser = this.addedUser.find(user => user.username === this.username);
-        return foundUser ? foundUser.usertype : undefined;
+        if(foundUser){
+            localStorage.setItem('usertype', JSON.stringify(foundUser.usertype));
+            return foundUser.usertype;
+        }
+        return undefined;
     }
 
+    autoLogin(){
+        const userData = localStorage.getItem('usertype');
+        if(!userData){
+            return;
+        }
+
+
+    }
+
+    logout(){
+        this.username = '';
+        this.router.navigate(['../login'], {relativeTo: this.route});
+    }
 
 }

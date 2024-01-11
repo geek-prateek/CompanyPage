@@ -30,7 +30,7 @@ export class CompanyComponent implements OnInit{
     }
 
     onReturn(){
-        this.router.navigate(['../']);
+        this.userService.logout();
     }
    
     // onSubmit(event: any){

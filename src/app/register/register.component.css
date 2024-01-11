@@ -13,3 +13,9 @@ input:active{
 span{
     color: red;
 }
+
+.loginClass{
+    color: rgb(0, 110, 255);
+    cursor: pointer;
+    
+}

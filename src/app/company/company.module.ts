@@ -5,7 +5,7 @@ import { CompanyRoutingModule } from "./company-routing.module";
 import { TitleCasePipe } from "../shared/title-case.pipe";
 import { CommonModule } from "@angular/common";
 import { SharedModule } from "../shared/shared.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "../app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { FilterSearchPipe } from "../shared/filter-search.pipe";
@@ -21,6 +21,7 @@ import { FilterSearchPipe } from "../shared/filter-search.pipe";
         FormsModule,
         CommonModule,
         SharedModule,
+        ReactiveFormsModule,
         CompanyRoutingModule
     ],
     exports: [

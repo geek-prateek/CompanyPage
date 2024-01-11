@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CompanyComponent } from './company/company.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './shared/shared.module';
 import { CompanyEditComponent } from './company/company-edit/company-edit.component';
@@ -15,12 +15,16 @@ import { CompanyService } from './company/company.service';
 import { TitleCasePipe } from './shared/title-case.pipe';
 import { FilterSearchPipe } from './shared/filter-search.pipe';
 import { CompanyModule } from './company/company.module';
+import { AlertComponent } from './shared/alert/alert.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    AlertComponent,
+    SpinnerComponent,
     // CompanyComponent,
     // CompanyEditComponent,
     // TitleCasePipe,
@@ -31,7 +35,8 @@ import { CompanyModule } from './company/company.module';
     AppRoutingModule,
     FormsModule,
     SharedModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

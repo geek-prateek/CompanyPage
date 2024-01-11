@@ -1,7 +1,18 @@
-.top-div {
+.top-div{
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
+}
+
+span{
+    color: red;
+    font-weight: bold;
+}
+
+input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+
+input.ng-valid{
+    border: 1px solid green;
 }

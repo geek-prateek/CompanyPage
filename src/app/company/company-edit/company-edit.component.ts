@@ -4,6 +4,7 @@ import { CompanyDetails } from "src/app/company/CompanyDetails";
 import { CompanyService } from "src/app/company/company.service";
 import { CanComponentDeactivate } from "../can-deactivate-guard.service";
 import { Observable } from "rxjs";
+import { FormControl } from "@angular/forms";
 
 @Component({
     selector: "app-company-edit",
@@ -23,6 +24,8 @@ export class CompanyEditComponent implements OnInit{
             this.empAddr = params['address'];
         })
     }
+
+    
 
     // ngOnChanges(){
     //     console.log("Item : " +this.companyService.items);

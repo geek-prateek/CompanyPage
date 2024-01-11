@@ -1,10 +1,11 @@
+<form [formGroup]="registerForm">
 <div class="top-div container">
   <div class="card" style="width: 30rem">
     <div class="card-body">
       <h3><b>SIGN UP</b></h3>
       <div class="mb-1 my-5">
       <label for="usertype">Select Usertype : </label>&nbsp;
-      <select name="usertype" id="usertype" [(ngModel)]="usertype">
+      <select name="usertype" id="usertype" formControlName="usertype">
         <option value="" selected disabled hidden>Choose here</option>
         <option value="admin">Admin</option>
         <option value="superadmin">SuperAdmin</option>
@@ -15,12 +16,15 @@
         <input
           type="text"
           class="form-control"
-          [(ngModel)]="username"
+          formControlName="username"
           placeholder="Username"
+          (change)="onCheck()"
         />
         <label for="floatingInput">Username</label>
       </div>
-      <small *ngIf="((username.length > 0) && (username.length < 3))"><span>*Username must be greater than 3 characters</span></small>
+      <small *ngIf="((usernameLength > 0) && (usernameLength < 3))"><span>*Username must be greater than 3 characters</span></small>
+      <small style="color: brown;">{{content}}</small>
+
       <br />
 
       <div class="form-floating">
@@ -28,17 +32,17 @@
           type="password"
           class="form-control"
           placeholder="Password"
-          [(ngModel)]="password"
+          formControlName="password"
         />
         <label for="floatingPassword">Password</label>
         
       </div>
       <small>
-        <span *ngIf="((password.length > 0) && (password.length < 8))">*Password must be of minimum 8 characters </span>
-        <span *ngIf="password && !password.match(upperCase)"> 1 upperCase </span>
-        <span *ngIf="password && !password.match(lowerCase)"> 1 lowerCase </span>
-        <span *ngIf="password && !password.match(number)"> 1 digit </span>
-        <span *ngIf="password && !password.match(specialCharacter)"> 1 specialCharacter</span>
+        <span *ngIf="((passwordLength > 0) && (passwordLength < 8))">*Password must be of minimum 8 characters </span>
+        <span *ngIf="passwordValue && !passwordValue.match(upperCase)"> 1 upperCase </span>
+        <span *ngIf="passwordValue && !passwordValue.match(lowerCase)"> 1 lowerCase </span>
+        <span *ngIf="passwordValue && !passwordValue.match(number)"> 1 digit </span>
+        <span *ngIf="passwordValue && !passwordValue.match(specialCharacter)"> 1 specialCharacter</span>
       </small>
       <br />
       <div class="form-floating">
@@ -46,7 +50,8 @@
           type="password"
           class="form-control"
           placeholder="Password"
-          [(ngModel)]="confirmPassword"
+          formControlName="confirmPassword"
+          (change)="onConfirmCheck()"
         />
         <label for="floatingPassword">Confirm Password</label>
       </div>
@@ -55,12 +60,14 @@
       <button
         type="submit"
         class="btn btn-success btn-lg my-4"
-        [disabled] = "!usertype || !username || !password || !confirmPassword"
+        [disabled] = "!usertypeValue || !usernameValue || !passwordValue || !confirmPasswordValue"
         (click)="onRegister()"
       >
         Sign Up
       </button><br>
-      <small *ngIf="!usertype || !username || !password || !confirmPassword">*For enable, fill all the details</small>
+      <small *ngIf="!usertypeValue || !usernameValue || !passwordValue || !confirmPasswordValue">*For enable, fill all the details</small>
+      <p class="loginClass" [routerLink]="['/login']">Already a user ! login</p>
     </div>
   </div>
 </div>
+</form>
