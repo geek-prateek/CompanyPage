@@ -1,73 +1,73 @@
 <form [formGroup]="registerForm">
-<div class="top-div container">
-  <div class="card" style="width: 30rem">
-    <div class="card-body">
-      <h3><b>SIGN UP</b></h3>
-      <div class="mb-1 my-5">
-      <label for="usertype">Select Usertype : </label>&nbsp;
-      <select name="usertype" id="usertype" formControlName="usertype">
-        <option value="" selected disabled hidden>Choose here</option>
-        <option value="admin">Admin</option>
-        <option value="superadmin">SuperAdmin</option>
-      </select>
-    </div>
-      <br />  
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          formControlName="username"
-          placeholder="Username"
-          (change)="onCheck()"
-        />
-        <label for="floatingInput">Username</label>
+  <div class="top-div container">
+    <div class="card" style="width: 30rem">
+      <div class="card-body">
+        <h3><b>SIGN UP</b></h3>
+        <div class="mb-1 my-5">
+        <label for="usertype">Select Usertype : <span>*</span></label>&nbsp;
+        <select name="usertype" id="usertype" formControlName="usertype">
+          <option value="" selected disabled hidden>Choose here</option>
+          <option value="admin">Admin</option>
+          <option value="superadmin">SuperAdmin</option>
+        </select>
       </div>
-      <small *ngIf="((usernameLength > 0) && (usernameLength < 3))"><span>*Username must be greater than 3 characters</span></small>
-      <small style="color: brown;">{{content}}</small>
-
-      <br />
-
-      <div class="form-floating">
-        <input
-          type="password"
-          class="form-control"
-          placeholder="Password"
-          formControlName="password"
-        />
-        <label for="floatingPassword">Password</label>
-        
+        <br />  
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="username"
+            placeholder="Username"
+            (change)="onCheck()"
+          />
+          <label for="floatingInput">Username <span>*</span></label>
+        </div>
+        <small *ngIf="registerForm.get('username')?.errors?.['minlength']"><span>*Username must be greater than 3 characters</span></small>
+        <small style="color: brown;">{{content}}</small>
+  
+        <br />
+  
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <label for="floatingPassword">Password <span>*</span></label>
+          
+        </div>
+        <small>
+          <span *ngIf="registerForm.get('password')?.errors?.['minlength']">*Password must be of minimum 8 characters </span>
+          <span *ngIf="registerForm.get('password')?.errors?.['pattern']"> 1 upperCase </span>
+          <span *ngIf="registerForm.get('password')?.errors?.['pattern']"> 1 lowerCase </span>
+          <span *ngIf="registerForm.get('password')?.errors?.['pattern']"> 1 digit </span>
+          <span *ngIf="registerForm.get('password')?.errors?.['pattern']"> 1 specialCharacter</span>
+        </small>
+        <br />
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            formControlName="confirmPassword"
+            (change)="onConfirmCheck()"
+          />
+          <label for="floatingPassword">Confirm Password <span>*</span></label>
+        </div>
+        <br />
+  
+        <button
+          type="submit"
+          class="btn btn-success btn-lg my-4"
+          [disabled] = "!registerForm.valid"
+          (click)="onRegister()"
+        >
+          Sign Up
+        </button><br>
+        <small *ngIf="!registerForm.valid">*For enable, fill all the details</small>
+        <p class="loginClass" [routerLink]="['/login']">Already a user ! login</p>
       </div>
-      <small>
-        <span *ngIf="((passwordLength > 0) && (passwordLength < 8))">*Password must be of minimum 8 characters </span>
-        <span *ngIf="passwordValue && !passwordValue.match(upperCase)"> 1 upperCase </span>
-        <span *ngIf="passwordValue && !passwordValue.match(lowerCase)"> 1 lowerCase </span>
-        <span *ngIf="passwordValue && !passwordValue.match(number)"> 1 digit </span>
-        <span *ngIf="passwordValue && !passwordValue.match(specialCharacter)"> 1 specialCharacter</span>
-      </small>
-      <br />
-      <div class="form-floating">
-        <input
-          type="password"
-          class="form-control"
-          placeholder="Password"
-          formControlName="confirmPassword"
-          (change)="onConfirmCheck()"
-        />
-        <label for="floatingPassword">Confirm Password</label>
-      </div>
-      <br />
-
-      <button
-        type="submit"
-        class="btn btn-success btn-lg my-4"
-        [disabled] = "!usertypeValue || !usernameValue || !passwordValue || !confirmPasswordValue"
-        (click)="onRegister()"
-      >
-        Sign Up
-      </button><br>
-      <small *ngIf="!usertypeValue || !usernameValue || !passwordValue || !confirmPasswordValue">*For enable, fill all the details</small>
-      <p class="loginClass" [routerLink]="['/login']">Already a user ! login</p>
     </div>
   </div>
-</div>
-</form>
+  </form>
