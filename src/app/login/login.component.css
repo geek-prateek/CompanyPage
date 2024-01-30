@@ -16,3 +16,14 @@ input.ng-touched.ng-invalid{
 input.ng-valid{
     border: 1px solid green;
 }
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.textCenter{
+    text-align: center;
+}
